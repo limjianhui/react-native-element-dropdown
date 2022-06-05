@@ -30,7 +30,6 @@ const MultiSelectComponent = React.forwardRef<any, MultiSelectProps>((props, cur
   const orientation = useDeviceOrientation();
   const {
     testID,
-    itemTestIDField,
     onChange,
     data,
     value,
@@ -211,7 +210,7 @@ const MultiSelectComponent = React.forwardRef<any, MultiSelectProps>((props, cur
 
   const _renderItem = ({ item, index }: { item: any; index: number }) => {
     return (
-      <TouchableOpacity testID={_.get(item, itemTestIDField)} key={index} onPress={() => onSelect(item)} style={[checkSelected(item) && { backgroundColor: activeColor, marginBottom: 0.5 }]}>
+      <TouchableOpacity key={index} onPress={() => onSelect(item)} style={[checkSelected(item) && { backgroundColor: activeColor, marginBottom: 0.5 }]}>
         {renderItem ? renderItem(item) : <View style={styles.item}>
           <Text style={[styles.textItem, placeholderStyle, font()]}>{_.get(item, labelField)}</Text>
         </View>}
@@ -397,7 +396,6 @@ const MultiSelectComponent = React.forwardRef<any, MultiSelectProps>((props, cur
         {list.map(e => {
           if (renderSelectedItem) {
             return <TouchableOpacity
-              testID={_.get(e, itemTestIDField)}
               key={_.get(e, labelField)}
               onPress={() => unSelect(e)}
             >
@@ -406,7 +404,6 @@ const MultiSelectComponent = React.forwardRef<any, MultiSelectProps>((props, cur
           } else {
             return (
               <TouchableOpacity
-                testID={_.get(e, itemTestIDField)}
                 key={_.get(e, labelField)}
                 style={[styles.selectedItem, selectedStyle]}
                 onPress={() => unSelect(e)}

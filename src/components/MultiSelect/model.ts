@@ -8,7 +8,6 @@ export interface IMultiSelectRef {
 
 interface IProps {
   testID?: string;
-  itemTestIDField?: string;
   style?: StyleProp<ViewStyle>;
   containerStyle?: StyleProp<ViewStyle>;
   placeholderStyle?: StyleProp<TextStyle>

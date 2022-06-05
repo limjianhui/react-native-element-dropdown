@@ -31,7 +31,6 @@ const DropdownComponent = React.forwardRef<any, DropdownProps>((props, currentRe
   const orientation = useDeviceOrientation();
   const {
     testID,
-    itemTestIDField,
     onChange,
     style,
     containerStyle,
@@ -236,7 +235,7 @@ const DropdownComponent = React.forwardRef<any, DropdownProps>((props, currentRe
   const _renderItem = ({ item, index }: { item: any; index: number }) => {
     const isSelected = currentValue && _.get(currentValue, valueField);
     return (
-      <TouchableOpacity testID={_.get(item, itemTestIDField)} key={index} onPress={() => onSelect(item)} style={[_.isEqual(_.get(item, valueField), isSelected) && { backgroundColor: activeColor }]}>
+      <TouchableOpacity key={index} onPress={() => onSelect(item)} style={[_.isEqual(_.get(item, valueField), isSelected) && { backgroundColor: activeColor }]}>
         {renderItem ? renderItem(item) : <View style={styles.item}>
           <Text style={[styles.textItem, selectedTextStyle, font()]}>{_.get(item, labelField)}</Text>
         </View>}
